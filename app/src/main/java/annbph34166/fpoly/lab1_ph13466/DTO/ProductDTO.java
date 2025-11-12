@@ -3,8 +3,8 @@ package annbph34166.fpoly.lab1_ph13466.DTO;
 public class ProductDTO {
     int id;
     String name;
-    int price;    // price NUMBER NOT NULL DEFAULT 0
-    int id_cat;   // khóa ngoại -> tb_cat(id)
+    int price;
+    int id_cat;
 
     public int getId() {
         return id;
