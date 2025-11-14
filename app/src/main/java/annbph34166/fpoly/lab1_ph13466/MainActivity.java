@@ -1,7 +1,10 @@
 package annbph34166.fpoly.lab1_ph13466;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button btnOpen = findViewById(R.id.btnOpenCategory);
+
 
         catDAO = new CatDAO(this);
 
@@ -39,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         list = catDAO.getAllCat();
         adapter = new CatAdapter(this, list);
         rc_cat.setAdapter(adapter);
+
+        btnOpen.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            startActivity(intent);
+        });
 
     }
 

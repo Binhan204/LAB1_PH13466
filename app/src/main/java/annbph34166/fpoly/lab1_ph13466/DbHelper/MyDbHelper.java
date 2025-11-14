@@ -9,7 +9,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
 
 
     private static final String DATABASE_NAME = "my_database.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
     public MyDbHelper(Context context) {
@@ -22,6 +22,9 @@ public class MyDbHelper extends SQLiteOpenHelper {
         String sqlCat = "CREATE TABLE tb_cat (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL);";
         db.execSQL(sqlCat);
 
+        db.execSQL("INSERT INTO tb_cat(name) VALUES ('Game')");
+        db.execSQL("INSERT INTO tb_cat(name) VALUES ('Âm nhạc')");
+        db.execSQL("INSERT INTO tb_cat(name) VALUES ('Phim ảnh')");
 
         String sqlProduct = "CREATE TABLE tb_product (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, price NUMBER NOT NULL DEFAULT 0, id_cat integer, CONSTRAINT fk_category FOREIGN KEY (id_cat) REFERENCES tb_cat (id))";
         db.execSQL(sqlProduct);
